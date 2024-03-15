@@ -111,15 +111,15 @@ function createProduct(data,include){
    cartBtnDiv.setAttribute("id",data.id);
    let cartBtn=document.createElement("i");
 //    console.log(data.id+"->"+cartBtnDiv.id)
-//    if(include){
+   if(include){
     cartBtn.classList.add("fa-solid");
     cartBtn.classList.add("fa-cart-shopping");
     cartBtnDiv.classList.add("add");
-//    }
-//    else{
-//     cartBtn.innerText="X";
-//     cartBtnDiv.classList.add("remove");
-//    }
+   }
+   else{
+    cartBtn.innerText="X";
+    cartBtnDiv.classList.add("remove");
+   }
    cartBtnDiv.appendChild(cartBtn);
 
    
@@ -174,13 +174,18 @@ function updateCart(){
     activateRemove();
 }
 function updateCartSummery(){
-    let avg=0;
+    piise=0;
     for(let i=0;i<productsInCart.length;i++){
         let priceString = products[i].price.replace(/\D/g, ''); 
-        avg+=parseFloat(priceString);
+        price+=parseFloat(priceString);
     }
-    avg=avg/productsInCart.length;
-    document.querySelector(".avg-prize").innerText=`$ ${avg}`
+    let avg=price/productsInCart.length;
+    document.querySelector(".avg-prize").innerText=`$ ${avg}`;
+
+    let total=price/productsInCart;
+    document.querySelector(".total-prize").innerText=`$ ${total}`;
+
+
 }
 
 function activateRemove(){
