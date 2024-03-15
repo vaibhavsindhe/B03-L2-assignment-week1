@@ -107,17 +107,19 @@ function createProduct(data,include){
 
    let cartBtnDiv=document.createElement("div");
    cartBtnDiv.classList.add("cartBtnDiv");
+ 
    cartBtnDiv.setAttribute("id",data.id);
    let cartBtn=document.createElement("i");
-   if(include){
+//    console.log(data.id+"->"+cartBtnDiv.id)
+//    if(include){
     cartBtn.classList.add("fa-solid");
     cartBtn.classList.add("fa-cart-shopping");
     cartBtnDiv.classList.add("add");
-   }
-   else{
-    cartBtn.innerText="X";
-    cartBtnDiv.classList.add("remove");
-   }
+//    }
+//    else{
+//     cartBtn.innerText="X";
+//     cartBtnDiv.classList.add("remove");
+//    }
    cartBtnDiv.appendChild(cartBtn);
 
    
@@ -145,8 +147,10 @@ addToCart.forEach((btn)=>{
 })
 
 function addProduct(){
-   productsInCart.push(products[this.id]);
-//    console.log(productsInCart);
+    console.log(products.find(product => product.id ===this.id).id+"->"+this.id)
+   let curr=products.find(product => product.id ===this.id);
+   productsInCart.push(curr);
+   console.log(this.id);
    updateCart();
    updateCartSummery();
 }

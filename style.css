@@ -106,7 +106,7 @@ input{
     img{
         width: 15rem;
     }
-    .cart-control{
+    .cart-control,.avg-prize-div,.total-prize-div{
         gap: 4rem;
     }
 }
